@@ -207,6 +207,7 @@ export class Bricks {
       }
      
       if (this.bricks.isPhaseFinished()) {
+        
         console.log('you win motherfucker')
       }
       // this.brickBreackSound.play();
