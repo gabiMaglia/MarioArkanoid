@@ -65,9 +65,9 @@ export class Level2 extends BaseLevel {
     this.scoreboard.create();
     this.liveBoard.create();
      
-    this.bricks.createBrick1(113, 188)
-    this.bricks.createBrick2(113, 144)
-    this.bricks.createBrick3(112, 100)
+    this.bricks.createBrick1(106, 188)
+    this.bricks.createBrick2(106, 144)
+    this.bricks.createBrick3(106, 100)
     
     this.arkanoid.createArk();
     this.fireball.createFireball();

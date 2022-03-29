@@ -8,7 +8,7 @@ const config = {
     width: 800,
     height: 600,
     parent: 'container',
-    scene: [ StartScene, Level2, Level1, GameOverScene],
+    scene: [Level2, StartScene, Level1, GameOverScene],
     physics: {
       default: 'arcade',
       arcade: {

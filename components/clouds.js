@@ -59,7 +59,7 @@ export class Cloud {
           height: 12,
           cellWidth: 1,
           cellHeight: 38.9,
-          x: -165, //113
+          x: -160, //113
           y: 14, //232
         },
       })
@@ -80,7 +80,7 @@ export class Cloud {
           height: 12,
           cellWidth: 1,
           cellHeight: 38.9,
-          x: 768, //113
+          x: 763, //113
           y: 14, //232
         }
       })
