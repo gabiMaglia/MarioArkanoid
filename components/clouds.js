@@ -86,7 +86,7 @@ export class Cloud {
       })
       .scaleXY(-0.84, -0.84)
       this.cloud3Group.getChildren().forEach(function (cloud) {
-       
+        
         cloud._displayOriginX = 620
       }, this);  
       

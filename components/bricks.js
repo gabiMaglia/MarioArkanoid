@@ -18,6 +18,16 @@ export class Bricks {
       }
   }
 
+  createParticle(key, x, y){
+    const p1 = this.relatedScene.add.particles(key)
+    const e = p1.createEmitter()
+    console.log(key);
+    e.setPosition(x, y)
+    e.setSpeed(80)
+    e.setScale(0.2)
+    e.setGravityY(1000)
+  }
+
   createBrick1(x, y) {
     this.relatedScene.brick1GroupFinished = false
     //creamos el grupo de bricks
@@ -36,6 +46,7 @@ export class Bricks {
 
     this.brick1Group.getChildren().forEach(function (bricks) {
       bricks.live = 1;
+      bricks.key = 'brick1'
     }, this);
   }
 
@@ -55,6 +66,7 @@ export class Bricks {
     });
     this.brick2Group.getChildren().forEach(function (bricks) {
       bricks.live = 1;
+      bricks.key = 'brick2'
     }, this);
   }
   createBrick3(x, y) {
@@ -105,6 +117,8 @@ export class Bricks {
       bricks.y += 3;
     }, 100);
     if (bricks.live == 0) {
+      this.bricks.createParticle(bricks.key, bricks.x, bricks.y)
+      
       let probability = Math.floor((Math.random() * 10) / 2);
       if (probability > 1) {
         this.coin = this.coin.createCoin(bricks.x, bricks.y);
@@ -135,6 +149,8 @@ export class Bricks {
       bricks.y += 3;
     }, 100);
     if (bricks.live == 0) {
+      this.bricks.createParticle(bricks.key, bricks.x, bricks.y)
+      
       let probability = Math.floor((Math.random() * 10) / 2);
       if (probability > 1) {
         this.coin = this.coin.createCoin(bricks.x, bricks.y);

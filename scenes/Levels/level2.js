@@ -68,6 +68,7 @@ export class Level2 extends BaseLevel {
     this.bricks.createBrick1(106, 188)
     this.bricks.createBrick2(106, 144)
     this.bricks.createBrick3(106, 100)
+  
     
     this.arkanoid.createArk();
     this.fireball.createFireball();
@@ -82,7 +83,7 @@ export class Level2 extends BaseLevel {
     this.cloud2Group = this.cloud.createTopGroup2 ()
     this.cloud3Group = this.cloud.createTopGroup3 ()
     
-
+    
    
   
     
