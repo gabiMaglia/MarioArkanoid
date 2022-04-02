@@ -39,7 +39,7 @@ export class Level2 extends BaseLevel {
       .image("brick4P", "../assets/images/bricks/brick4simple.png")
       .spritesheet(
         "brick3Sprite",
-        "../../assets/images/bricks/brick4Sprite.png",
+        "../../assets/images/bricks/brick3Sprite.png",
         {
           frameWidth: 59,
           frameHeight: 38,

@@ -44,7 +44,7 @@ export class Bricks {
     //creamos el grupo de bricks
     this.brick1Group = this.relatedScene.physics.add.staticGroup({
       key: "brick1",
-      frameQuantity: 0,
+      frameQuantity: 10,
       gridAlign: {
         width: 10,
         height: 4,
@@ -64,7 +64,7 @@ export class Bricks {
     this.relatedScene.brick2GroupFinished = false
     this.brick2Group = this.relatedScene.physics.add.staticGroup({
       key: "brick2",
-      frameQuantity: 0,
+      frameQuantity: 10,
       gridAlign: {
         width: 10,
         height: 4,
@@ -78,30 +78,11 @@ export class Bricks {
       bricks.live = 1;
     }, this);
   }
+ 
   createBrick3(x, y) {
     this.relatedScene.brick3GroupFinished = false
     this.brick3Group = this.relatedScene.physics.add.staticGroup({
       key: "brick3Sprite",
-      frames: [0, 1, 2],
-      frame: 2,
-      frameQuantity: 10,
-      gridAlign: {
-        width: 10,
-        height: 4,
-        cellWidth: 66,
-        cellHeight: 44,
-        x: x, //112
-        y: y, //144
-      },
-    });
-    this.brick3Group.getChildren().forEach(function (bricks) {
-      bricks.live = 3;
-    }, this);
-  }
-  createBrick4(x, y) {
-    this.relatedScene.brick4GroupFinished = false
-    this.brick4Group = this.relatedScene.physics.add.staticGroup({
-      key: "brick4Sprite",
       frames: [0, 1],
       frame: 1,
       frameQuantity: 10,
@@ -114,8 +95,29 @@ export class Bricks {
         y: y, //100
       },
     });
-    this.brick4Group.getChildren().forEach(function (bricks) {
+    this.brick3Group.getChildren().forEach(function (bricks) {
       bricks.live = 2;
+    }, this);
+  }
+
+  createBrick4(x, y) {
+    this.relatedScene.brick4GroupFinished = false
+    this.brick4Group = this.relatedScene.physics.add.staticGroup({
+      key: "brick4Sprite",
+      frames: [0, 1, 2],
+      frame: 2,
+      frameQuantity: 10,
+      gridAlign: {
+        width: 10,
+        height: 4,
+        cellWidth: 66,
+        cellHeight: 44,
+        x: x, //112
+        y: y, //144
+      },
+    });
+    this.brick4Group.getChildren().forEach(function (bricks) {
+      bricks.live = 3;
     }, this);
   }
 
