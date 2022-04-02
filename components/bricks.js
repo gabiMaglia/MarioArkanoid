@@ -20,12 +20,23 @@ export class Bricks {
 
   createParticle(key, x, y){
     const p1 = this.relatedScene.add.particles(key)
-    const e = p1.createEmitter()
-    console.log(key);
+    
+    const e = p1.createEmitter({
+       scale: 0.3,             
+       lifespan: 900,   
+      // **physics**
+       speed: 100 ,               
+       gravityY: 300,
+      // **custom particle**
+      particleClass: Phaser.GameObjects.Particles.Particle,
+       frequency: 20,    
+       quantity: 1,      
+       maxParticles: 5,
+       reserve: 0.5,
+       rotate: Math.round(Math.random()*10.3),
+       timeScale: 1.2,
+  });
     e.setPosition(x, y)
-    e.setSpeed(80)
-    e.setScale(0.2)
-    e.setGravityY(1000)
   }
 
   createBrick1(x, y) {
@@ -33,7 +44,7 @@ export class Bricks {
     //creamos el grupo de bricks
     this.brick1Group = this.relatedScene.physics.add.staticGroup({
       key: "brick1",
-      frameQuantity: 10,
+      frameQuantity: 0,
       gridAlign: {
         width: 10,
         height: 4,
@@ -46,7 +57,6 @@ export class Bricks {
 
     this.brick1Group.getChildren().forEach(function (bricks) {
       bricks.live = 1;
-      bricks.key = 'brick1'
     }, this);
   }
 
@@ -54,7 +64,7 @@ export class Bricks {
     this.relatedScene.brick2GroupFinished = false
     this.brick2Group = this.relatedScene.physics.add.staticGroup({
       key: "brick2",
-      frameQuantity: 10,
+      frameQuantity: 0,
       gridAlign: {
         width: 10,
         height: 4,
@@ -66,7 +76,6 @@ export class Bricks {
     });
     this.brick2Group.getChildren().forEach(function (bricks) {
       bricks.live = 1;
-      bricks.key = 'brick2'
     }, this);
   }
   createBrick3(x, y) {
@@ -117,7 +126,7 @@ export class Bricks {
       bricks.y += 3;
     }, 100);
     if (bricks.live == 0) {
-      this.bricks.createParticle(bricks.key, bricks.x, bricks.y)
+      this.bricks.createParticle('brick1', bricks.x, bricks.y)
       
       let probability = Math.floor((Math.random() * 10) / 2);
       if (probability > 1) {
@@ -149,8 +158,8 @@ export class Bricks {
       bricks.y += 3;
     }, 100);
     if (bricks.live == 0) {
-      this.bricks.createParticle(bricks.key, bricks.x, bricks.y)
-      
+      this.bricks.createParticle('brick2', bricks.x, bricks.y)
+
       let probability = Math.floor((Math.random() * 10) / 2);
       if (probability > 1) {
         this.coin = this.coin.createCoin(bricks.x, bricks.y);
@@ -180,6 +189,8 @@ export class Bricks {
     bricks.setFrame(bricks.frame.name - 1);
 
     if (bricks.live == 0) {
+      this.bricks.createParticle('brick3P', bricks.x, bricks.y)
+
       let probability = Math.floor((Math.random() * 10) / 2);
       if (probability > 1) {
         this.coin = this.coin.createCoin(bricks.x, bricks.y);
@@ -209,6 +220,7 @@ export class Bricks {
     bricks.setFrame(bricks.frame.name - 1);
 
     if (bricks.live == 0) {
+      this.bricks.createParticle('brick4P', bricks.x, bricks.y)
       let probability = Math.floor((Math.random() * 10) / 2);
       if (probability > 1) {
         this.coin = this.coin.createCoin(bricks.x, bricks.y);

@@ -36,6 +36,8 @@ export class Level1 extends BaseLevel {
       )
       .image("brick1", "../assets/images/bricks/brick1.png")
       .image("brick2", "../assets/images/bricks/brick2.png")
+      .image("brick3P", "../assets/images/bricks/brick3simple.png")
+      .image("brick4P", "../assets/images/bricks/brick4simple.png")
       .spritesheet(
         "brick3Sprite",
         "../../assets/images/bricks/brick4Sprite.png",
