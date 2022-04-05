@@ -3,11 +3,11 @@ export class Arkanoid {
         this.relatedScene = scene
     }
 
-    createArk() {
-        this.arkanoid = this.relatedScene.physics.add.image(400, 550, "arkanoid").setImmovable().setOrigin(0.5, 0.5);
+    createArk(flip, sprite) {
+        this.arkanoid = this.relatedScene.physics.add.image(400, 550, sprite).setImmovable().setOrigin(0.5, 0.5);
         this.arkanoid.body.allowGravity = false;
         this.arkanoid.body.collideWorldBounds = true;
-        
+        this.arkanoid.flipY = flip
     }
     
     get() {
