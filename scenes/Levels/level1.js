@@ -40,7 +40,7 @@ export class Level1 extends BaseLevel {
       .image("brick4P", "../assets/images/bricks/brick4simple.png")
       .spritesheet(
         "brick3Sprite",
-        "../../assets/images/bricks/brick4Sprite.png",
+        "../../assets/images/bricks/brick3Sprite.png",
         {
           frameWidth: 59,
           frameHeight: 38,
@@ -59,7 +59,8 @@ export class Level1 extends BaseLevel {
   create() {
     this.cameras.main.fadeIn(600, 10, 0, 0);
     
-    this.cloud = new Cloud(this);
+    this.cloud1 = new Cloud(this);
+    this.cloud2 = new Cloud(this)
     this.add.image(400, 150, "backgroundLvl1");
     
     this.levelBoard.create();
@@ -78,13 +79,13 @@ export class Level1 extends BaseLevel {
     this.coinAudio.rate =1.5
 
 
-    this.cloud1 = this.cloud.createCloud1(70, 404);
-    this.cloud2 = this.cloud.createCloud2(730, 300);
+    this.cloud1.createCloud(70, 404, 40);
+    this.cloud2.createCloud(730, 300, -40);
   
     
    this.physics.add.collider(this.fireball.get(), this.arkanoid.get(), this.arkanoid.platformImpact, null, this);
-   this.physics.add.collider(this.fireball.get(), this.cloud.get(), this.cloud.cloudImpact, null, this);
-   this.physics.add.collider(this.fireball.get(), this.cloud.get1(), this.cloud.cloudImpact, null, this)
+   this.physics.add.collider(this.fireball.get(), this.cloud1.get(), this.cloud1.cloudImpact, null, this);
+   this.physics.add.collider(this.fireball.get(), this.cloud2.get(), this.cloud2.cloudImpact, null, this)
   
    this.physics.add.collider(
     this.bricks.brick1Group,
@@ -119,16 +120,16 @@ update() {
    
     
 
-    if (this.cloud.cloud1.x > 270) {
-      this.cloud.cloud1.setVelocityX(-40);
-    } else if (this.cloud.cloud1.x < 70) {
-      this.cloud.cloud1.setVelocityX(40);
+    if (this.cloud1.get().x > 270) {
+      this.cloud1.get().setVelocityX(-40);
+    } else if (this.cloud1.get().x < 70) {
+      this.cloud1.get().setVelocityX(40);
     }
 
-    if (this.cloud.cloud2.x < 530) {
-      this.cloud.cloud2.setVelocityX(40);
-    } else if (this.cloud.cloud2.x > 730) {
-      this.cloud.cloud2.setVelocityX(-40);
+    if (this.cloud2.get().x < 530) {
+      this.cloud2.get().setVelocityX(40);
+    } else if (this.cloud2.get().x > 730) {
+      this.cloud2.get().setVelocityX(-40);
     }
 
       

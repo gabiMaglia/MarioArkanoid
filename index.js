@@ -9,11 +9,13 @@ const config = {
     width: 800,
     height: 600,
     parent: 'container',
-    scene: [ Level2, Level3, StartScene, Level1, GameOverScene],
+    scene: [ Level3, Level1, StartScene, Level2, GameOverScene],
     physics: {
       default: 'arcade',
       arcade: {
-        debug: false
+        debug: true,
+        debugShowBody: true,
+        debugShowStaticBody: true
       }
     },
     scale: {

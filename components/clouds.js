@@ -3,30 +3,20 @@ export class Cloud {
     this.relatedScene = scene;
   }
 
-  createCloud1(x, y) {
-    this.cloud1 = this.relatedScene.physics.add
+  createCloud(x, y, movimiento ) {
+    this.cloud = this.relatedScene.physics.add
       .image(x, y, "cloud")
       .setCollideWorldBounds(true)
       .setScale(0.2)
-      .setVelocityX(40)
+      .setVelocityX(movimiento)
       .setImmovable();
   }
-  createCloud2(x, y) {
-    this.cloud2 = this.relatedScene.physics.add
-      .image(x, y, "cloud")
-      .setCollideWorldBounds(true)
-      .setScale(0.2)
-      .setVelocityX(-40)
-      .setImmovable();
-  }
+  
 
   get() {
-    return this.cloud2;
+    return this.cloud;
   }
 
-  get1() {
-    return this.cloud1;
-  }
 
   createTopGroup1() {
     this.cloud1Group = this.relatedScene.physics.add

@@ -1,6 +1,7 @@
 import  BaseLevel  from "./baseLevel.js";
 import { Cloud } from "../../components/clouds.js";
 import { CanonBall } from "../../components/canonBalls.js"
+import { Bullet } from "../../components/bullets.js";
 export class Level2 extends BaseLevel {
     constructor(scene) {
         super({ key: "Level2" });
@@ -66,6 +67,11 @@ export class Level2 extends BaseLevel {
   create() {
     this.cloud = new Cloud(this);
     this.canonball = new CanonBall(this)
+    
+    this.bullet1 = new Bullet(this)
+    this.bullet2 = new Bullet(this)
+      
+      
     this.cameras.main.fadeIn(600, 10, 0, 0);
     
     
@@ -100,9 +106,8 @@ export class Level2 extends BaseLevel {
     this.cloud3Group = this.cloud.createTopGroup3 ()
 
   
-    this.canonball.createBullet1(770,260, false)
-    
-    this.canonball.createBullet2(27,380, true)
+    this.bullet1.createBullet(770, 260, false, -100)
+    this.bullet2.createBullet(27, 380, true, 100)
     
     this.canonball.createCannonBall(27, 380, false)
     this.canonball.createCannonBall(772, 260, true)
@@ -115,8 +120,8 @@ export class Level2 extends BaseLevel {
    this.physics.add.collider(this.fireball.get(), this.cloud.getGroup2(), this.cloud.cloudImpact, null, this)
    this.physics.add.collider(this.fireball.get(), this.cloud.getGroup3(), this.cloud.cloudImpact, null, this)
    
-   this.physics.add.collider(this.fireball.get(), this.canonball.getBullet1(), this.canonball.bulletImpact, null, this) 
-   this.physics.add.collider(this.fireball.get(), this.canonball.getBullet2(), this.canonball.bulletImpact, null, this) 
+   this.physics.add.collider(this.fireball.get(), this.bullet1.getBullet(), this.bullet1.bulletImpact, null, this) 
+   this.physics.add.collider(this.fireball.get(), this.bullet2.getBullet(), this.bullet2.bulletImpact, null, this) 
    
    this.physics.add.collider(
     this.bricks.brick1Group,
@@ -148,18 +153,20 @@ export class Level2 extends BaseLevel {
 
 update() {
     super.update();
-  // TODO make gravity works on the fireball hit  and the take it out when the cannonball is respawned
+ 
   
-    if(this.canonball.bullet1.x < -522 || this.canonball.bullet1.y > 580){
-     
-      this.canonball.bullet1.x = 790
-      this.canonball.bullet1.y = 260
+    if(this.bullet1.bullet.x < -522 || this.bullet1.bullet.y > 580){
+      this.bullet1.getBullet().disableBody(true, true);
+      this.bullet1 =  new Bullet(this)
+      this.bullet1.createBullet(770, 260, false, -100)
+      this.physics.add.collider(this.fireball.get(), this.bullet1.getBullet(), this.bullet1.bulletImpact, null, this) 
     }
     
-    if(this.canonball.bullet2.x > 1322 || this.canonball.bullet2.y > 580){
-     
-      this.canonball.bullet2.x = 7 
-      this.canonball.bullet2.y = 380
+    if(this.bullet2.bullet.x > 1322 || this.bullet2.bullet.y > 580){
+      this.bullet2.getBullet().disableBody(true, true);
+      this.bullet2 = new Bullet(this)
+      this.bullet2.createBullet(27, 380, true, 100)
+      this.physics.add.collider(this.fireball.get(), this.bullet2.getBullet(), this.bullet2.bulletImpact, null, this) 
       
     }     
   }

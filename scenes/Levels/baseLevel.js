@@ -23,18 +23,16 @@ export default class BaseLevel extends Phaser.Scene  {
     this.teclas = this.input.keyboard.createCursorKeys();
   }
 
-  isPhaseFinished() {
-    return this.brick1Group.countActive() === 0;
-  }
+  // isPhaseFinished() {
+  //   return this.brick1Group.countActive() === 0;
+  // }
 
   update() {
     this.arkanoid.arkMove(this.teclas, this.fireball, this.arkanoid);
     
     
     if (this.coin) {
-      this.coin = new Coins(this);
-
-      
+      this.coin = new Coins(this);  
     }
     
     if (this.fireball.fireballLost()) {

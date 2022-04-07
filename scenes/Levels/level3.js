@@ -1,4 +1,5 @@
 import  BaseLevel  from "./baseLevel.js";
+import { FireTraps } from "../../components/fireTraps.js"
 
 
 export class Level3 extends BaseLevel {
@@ -33,6 +34,7 @@ export class Level3 extends BaseLevel {
           frameHeight: 20,
         }
       )
+      .image('fireTrap','../assets/images/levelScenes/level3/lvl3firetrap.png')
       .image("brick1", "../assets/images/bricks/brick1.png")
       .image("brick2", "../assets/images/bricks/brick2.png")
       .image("brick3P", "../assets/images/bricks/brick3simple.png")
@@ -80,7 +82,7 @@ export class Level3 extends BaseLevel {
     this.bricks.createBrick3(106, 144)
     this.bricks.createBrick4(106, 100)
     
-    this.arkanoid.createArk();
+    this.arkanoid.createArk(false, 'arkanoid');
     this.fireball.createFireball();
     
     
@@ -90,10 +92,17 @@ export class Level3 extends BaseLevel {
     this.coinAudio.rate = 1.5
     
     
-   
-  
+    this.fireTraps1 = new FireTraps(this);
+    this.fireTraps2 = new FireTraps(this);
+
+    this.fireTraps1.createFireTrap(120, 320)
+    this.fireTraps2.createFireTrap(655, 370)
+
+
+    this.physics.add.collider(this.fireball.get(), this.fireTraps1.getFireTraps())
+    this.physics.add.collider(this.fireball.get(), this.fireTraps2.getFireTraps())
     
-   this.physics.add.collider(this.fireball.get(), this.arkanoid.get(), this.arkanoid.platformImpact, null, this);
+    this.physics.add.collider(this.fireball.get(), this.arkanoid.get(), this.arkanoid.platformImpact, null, this);
    
    
 
