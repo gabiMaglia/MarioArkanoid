@@ -2,6 +2,7 @@ import  BaseLevel  from "./baseLevel.js";
 import { Cloud } from "../../components/clouds.js";
 import { CanonBall } from "../../components/canonBalls.js"
 import { Bullet } from "../../components/bullets.js";
+const LEVEL = 2
 export class Level2 extends BaseLevel {
     constructor(scene) {
         super({ key: "Level2" });
@@ -10,6 +11,7 @@ export class Level2 extends BaseLevel {
    
     preload() {
 
+      
 
       this.load.spritesheet(
         "coin",

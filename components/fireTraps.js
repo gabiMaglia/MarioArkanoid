@@ -12,7 +12,7 @@ export class FireTraps {
        this.fireTrap.setSize(250, 780)
        this.fireTrap.setAngle(55)
        //this.fireTrap.body.setAngleVelocity(50)
-        this.fireTrap.setSizeToFrame(true)
+    
        this.fireTrap.setOffset(470, 0)
        console.log(this.fireTrap);  
 

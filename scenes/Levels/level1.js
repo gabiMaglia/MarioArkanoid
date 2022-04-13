@@ -1,6 +1,6 @@
 import  BaseLevel  from "./baseLevel.js";
 import { Cloud } from "../../components/clouds.js";
-const LEVEL = 1
+
 
 export class Level1 extends BaseLevel {
   constructor(scene) {
@@ -54,7 +54,10 @@ export class Level1 extends BaseLevel {
       .image("cloud", "../assets/images/levelScenes/level1/cloudLVL1.png")
       
       .audio("ballLost", "../assets/sounds/ballLost.mp3");
-  }
+        
+
+      
+    }
 
   create() {
     this.cameras.main.fadeIn(600, 10, 0, 0);
@@ -68,8 +71,8 @@ export class Level1 extends BaseLevel {
     this.liveBoard.create();
      
     this.bricks.createBrick1(113, 188)
-    this.bricks.createBrick2(113, 144)
-    this.bricks.createBrick3(112, 100)
+    // this.bricks.createBrick2(113, 144)
+    // this.bricks.createBrick3(112, 100)
     
     this.arkanoid.createArk(false, 'arkanoidlvl1');
     this.fireball.createFireball();
@@ -96,22 +99,22 @@ export class Level1 extends BaseLevel {
     this
   );
 
-  this.physics.add.collider(
-    this.bricks.brick2Group,
+  // this.physics.add.collider(
+  //   this.bricks.brick2Group,
 
-    this.fireball.get(),
-    this.bricks.brick2Impact,
-    null,
-    this
-  );
-  this.physics.add.collider(
-    this.bricks.brick3Group,
+  //   this.fireball.get(),
+  //   this.bricks.brick2Impact,
+  //   null,
+  //   this
+  // );
+  // this.physics.add.collider(
+  //   this.bricks.brick3Group,
 
-    this.fireball.get(),
-    this.bricks.brick3Impact,
-    null,
-    this
-  );
+  //   this.fireball.get(),
+  //   this.bricks.brick3Impact,
+  //   null,
+  //   this
+  // );
   
   }
 

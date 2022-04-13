@@ -18,7 +18,7 @@ export class Arkanoid {
     platformImpact(fireball, arkanoid) {
       let relativeImpact =
       fireball.x - arkanoid.x;
-      console.log(relativeImpact);
+      
       
       if (relativeImpact <= 0.1 && relativeImpact >= -0.1) {
         fireball.setVelocityX(Phaser.Math.Between(10, -10));
