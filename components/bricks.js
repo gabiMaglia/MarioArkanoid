@@ -19,10 +19,11 @@ export class Bricks {
   }
 
   nextLevel(level) {
-    if (level !== 3) {
-      this.relatedScene.scene.start("Level" + level);
-    } else {
+    if (level > 3) {
       console.log("ganaste el juego");
+    } else {
+      this.relatedScene.scene.start("Level" + level);
+      
     }
   }
 
@@ -72,7 +73,7 @@ export class Bricks {
     this.relatedScene.brick2GroupFinished = false;
     this.brick2Group = this.relatedScene.physics.add.staticGroup({
       key: "brick2",
-      frameQuantity: 10,
+      frameQuantity: 1,
       gridAlign: {
         width: 10,
         height: 4,
@@ -93,7 +94,7 @@ export class Bricks {
       key: "brick3Sprite",
       frames: [0, 1],
       frame: 1,
-      frameQuantity: 10,
+      frameQuantity: 1,
       gridAlign: {
         width: 10,
         height: 4,
@@ -114,7 +115,7 @@ export class Bricks {
       key: "brick4Sprite",
       frames: [0, 1, 2],
       frame: 2,
-      frameQuantity: 10,
+      frameQuantity: 1,
       gridAlign: {
         width: 10,
         height: 4,

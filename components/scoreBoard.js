@@ -1,9 +1,7 @@
 export class Scoreboard {
     constructor (scene) {
         this.relatedScene = scene
-        this.score =   this.relatedScene.registry.events.on('score', () =>{
-            this.registry.get('score')
-        })
+        this.score =  0
    
     }
 

@@ -13,7 +13,7 @@ export default class BaseLevel extends Phaser.Scene  {
 
 
   init() {
-    
+    console.log(this.level)
     this.registry.set('level', this.level)
     
     

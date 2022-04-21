@@ -97,7 +97,7 @@ export class Level3 extends BaseLevel {
 
     this.fireTraps1.createFireTrap(120, 320)
     this.fireTraps2.createFireTrap(655, 370)
-
+    console.log(this.fireTraps1.fireTrap.body);
 
     this.physics.add.collider(this.fireball.get(), this.fireTraps1.getFireTraps())
     this.physics.add.collider(this.fireball.get(), this.fireTraps2.getFireTraps())
@@ -141,15 +141,12 @@ export class Level3 extends BaseLevel {
   //   this
   // );
   
-  }
+}
 
 update() {
-    super.update();
-   
-    
-
-
-      
+  super.update();
+  
+  
       
       
   }
