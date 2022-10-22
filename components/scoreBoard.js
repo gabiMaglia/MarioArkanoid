@@ -1,7 +1,7 @@
 export class Scoreboard {
-    constructor (scene) {
+    constructor (scene, score) {
         this.relatedScene = scene
-        this.score =  0
+        this.score =  score || 0
    
     }
 

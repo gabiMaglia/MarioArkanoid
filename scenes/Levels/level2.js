@@ -4,7 +4,7 @@ import { CanonBall } from "../../components/canonBalls.js"
 import { Bullet } from "../../components/bullets.js";
 const LEVEL = 2
 export class Level2 extends BaseLevel {
-    constructor(scene) {
+    constructor(scene, score) {
         super({ key: "Level2" });
         this.level = 2
   }
@@ -80,7 +80,7 @@ export class Level2 extends BaseLevel {
     this.add.image(400, 150, "backgroundLvl2");
     
     this.levelBoard.create();
-    this.scoreboard.create();
+    this.scoreboard.create(score);
     this.liveBoard.create();
     
     this.bricks.createBrick1(106, 188)

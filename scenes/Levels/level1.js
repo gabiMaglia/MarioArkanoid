@@ -6,6 +6,7 @@ export class Level1 extends BaseLevel {
   constructor(scene) {
     super({ key: "Level1" });
     this.level = 1
+    
   }
    
     preload() {

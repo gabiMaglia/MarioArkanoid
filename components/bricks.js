@@ -22,7 +22,7 @@ export class Bricks {
     if (level > 3) {
       console.log("ganaste el juego");
     } else {
-      this.relatedScene.scene.start("Level" + level);
+      this.relatedScene.scene.start("Level" + level, score);
       
     }
   }
@@ -31,7 +31,7 @@ export class Bricks {
     const p1 = this.relatedScene.add.particles(key);
 
     const e = p1.createEmitter({
-      scale: 0.3,
+      scale: 0.2,
       lifespan: 900,
       // **physics**
       speed: 100,
@@ -39,7 +39,7 @@ export class Bricks {
       // **custom particle**
       particleClass: Phaser.GameObjects.Particles.Particle,
       frequency: 20,
-      quantity: 1,
+      quantity: 10,
       maxParticles: 5,
       reserve: 0.5,
       rotate: Math.round(Math.random() * 10.3),
@@ -53,7 +53,7 @@ export class Bricks {
     //creamos el grupo de bricks
     this.brick1Group = this.relatedScene.physics.add.staticGroup({
       key: "brick1",
-      frameQuantity: 1,
+      frameQuantity: 10,
       gridAlign: {
         width: 10,
         height: 4,
