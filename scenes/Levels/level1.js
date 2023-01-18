@@ -6,7 +6,6 @@ export class Level1 extends BaseLevel {
   constructor(scene) {
     super({ key: "Level1" });
     this.level = 1
-    
   }
    
     preload() {
@@ -68,7 +67,7 @@ export class Level1 extends BaseLevel {
     this.add.image(400, 150, "backgroundLvl1");
     
     this.levelBoard.create();
-    this.scoreboard.create();
+    this.scoreboard.create(0);
     this.liveBoard.create();
      
     this.bricks.createBrick1(113, 188)

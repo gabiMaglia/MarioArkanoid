@@ -6,52 +6,35 @@ import { Arkanoid } from "../../components/arkanoid.js";
 import { Fireball } from "../../components/fireball.js";
 import { Coins } from "../../components/PowerUps/coins.js";
 
-const INITIAL_LIVES = 6;
+const INITIAL_LIVES = 3;
 
-
-export default class BaseLevel extends Phaser.Scene  {
-
-
+export default class BaseLevel extends Phaser.Scene {
   init() {
-    console.log(this.level)
-    this.registry.set('level', this.level)
-    
-    
     this.bricks = new Bricks(this);
     this.arkanoid = new Arkanoid(this);
-    this.scoreboard = new Scoreboard(this) ;
+    this.scoreboard = new Scoreboard(this, 0);
     this.levelBoard = new LevelBoard(this, this.level);
     this.liveBoard = new Liveboard(this, INITIAL_LIVES);
     this.fireball = new Fireball(this);
     this.coin = new Coins(this);
-    
-        this.registry.events.on('score', (points) => {
-          this.scoreboard.score += points
-          
-      })
-    
-    // this.registry.set('lives', this.liveBoard.lives )
-    
-    
 
     this.physics.world.setBoundsCollision(true, true, true, false);
     this.teclas = this.input.keyboard.createCursorKeys();
   }
-  
-  
+
   update() {
     this.arkanoid.arkMove(this.teclas, this.fireball, this.arkanoid);
-    
+
     if (this.coin) {
-      this.coin = new Coins(this);  
+      this.coin = new Coins(this);
     }
-    
+
     if (this.fireball.fireballLost()) {
       this.liveBoard.decrementLive(1);
 
       if (this.liveBoard.lives < 1) {
         //  this.gameOverLastLive.play()
-        this.registry.events.emit('level', this.level);
+        this.registry.events.emit("level", this.level);
         this.scene.start("GameOver");
       } else {
         // this.fireballLostSound.play()

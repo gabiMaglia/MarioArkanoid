@@ -22,7 +22,10 @@ export class Bricks {
     if (level > 3) {
       console.log("ganaste el juego");
     } else {
-      this.relatedScene.scene.start("Level" + level, score);
+      const score = this.relatedScene.scoreboard.get()
+
+      this.relatedScene.scene.start("Level" + level, {'score' : score});
+      console.log(score)
       
     }
   }
@@ -53,7 +56,7 @@ export class Bricks {
     //creamos el grupo de bricks
     this.brick1Group = this.relatedScene.physics.add.staticGroup({
       key: "brick1",
-      frameQuantity: 10,
+      frameQuantity: 1,
       gridAlign: {
         width: 10,
         height: 4,

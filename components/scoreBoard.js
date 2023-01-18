@@ -1,13 +1,14 @@
 export class Scoreboard {
+    
+ 
     constructor (scene, score) {
         this.relatedScene = scene
-        this.score =  score || 0
-   
+        this.score = score
+
     }
-
-
+    
+    
     create () {
-        
         this.scoreText = this.relatedScene.add.text(646, 16, 'Score: '+ this.score, {
             fontFamily: 'mario',
             fontSize : '20px',    
@@ -28,6 +29,6 @@ export class Scoreboard {
     }
 
     get() {
-        this.score
+     return this.score
     }
 }
