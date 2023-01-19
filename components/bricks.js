@@ -22,11 +22,7 @@ export class Bricks {
     if (level > 3) {
       console.log("ganaste el juego");
     } else {
-      const score = this.relatedScene.scoreboard.get()
-
-      this.relatedScene.scene.start("Level" + level, {'score' : score});
-      console.log(score)
-      
+      this.relatedScene.scene.start("Level" + level);
     }
   }
 

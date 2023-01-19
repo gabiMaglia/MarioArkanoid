@@ -67,7 +67,7 @@ export class Level2 extends BaseLevel {
 
     this.add.image(400, 150, "backgroundLvl2");
     this.levelBoard.create();
-    this.scoreboard.create();
+    this.scoreboard.create(localStorage.score);
 
     this.liveBoard.create();
 

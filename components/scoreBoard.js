@@ -1,15 +1,13 @@
 export class Scoreboard {
     
- 
     constructor (scene, score) {
         this.relatedScene = scene
-        this.score = score
-
+        this.score = score 
     }
     
-    
-    create () {
-        this.scoreText = this.relatedScene.add.text(646, 16, 'Score: '+ this.score, {
+    create (points) {
+        this.score = points
+        this.scoreText = this.relatedScene.add.text(646, 16, 'Score: ' + this.score, {
             fontFamily: 'mario',
             fontSize : '20px',    
             fill: '#200' 
@@ -17,12 +15,11 @@ export class Scoreboard {
         
     }
     incrementPoint(points){
+        localStorage.score = this.score
         this.score += points
-        
-       this.relatedScene.registry.events.emit('score', points)
-        this.scoreText.setText('Score: ' + this.score)
+        this.scoreText.setText('Score: ' + parseInt(localStorage.score))
         if (this.score > 700){
-            this.score = 0
+            this.score  = 0
             this.relatedScene.liveBoard.incrementLive(1)
         }
        

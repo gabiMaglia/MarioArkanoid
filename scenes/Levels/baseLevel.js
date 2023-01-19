@@ -19,7 +19,9 @@ export default class BaseLevel extends Phaser.Scene {
     this.coin = new Coins(this);
 
     this.physics.world.setBoundsCollision(true, true, true, false);
-    this.teclas = this.input.keyboard.createCursorKeys();
+    this.teclas = this.input.keyboard.createCursorKeys()
+    
+  
   }
 
   update() {
@@ -43,7 +45,6 @@ export default class BaseLevel extends Phaser.Scene {
 
         setTimeout(() => {
           (this.fireball.get().visible = true), this.scene.resume();
-
           this.fireball.get().setY(this.arkanoid.get().body.position.y - 15);
           this.fireball.get().setX(this.arkanoid.get().body.position.x + 75);
           this.fireball.get().setVelocity(0);
