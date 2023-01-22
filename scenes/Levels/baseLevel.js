@@ -6,15 +6,16 @@ import { Arkanoid } from "../../components/arkanoid.js";
 import { Fireball } from "../../components/fireball.js";
 import { Coins } from "../../components/PowerUps/coins.js";
 
-const INITIAL_LIVES = 3;
+
 
 export default class BaseLevel extends Phaser.Scene {
   init() {
     this.bricks = new Bricks(this);
     this.arkanoid = new Arkanoid(this);
-    this.scoreboard = new Scoreboard(this, 0);
+    this.scoreboard = new Scoreboard(this);
     this.levelBoard = new LevelBoard(this, this.level);
-    this.liveBoard = new Liveboard(this, INITIAL_LIVES);
+      localStorage.level =this.level
+    this.liveBoard = new Liveboard(this);
     this.fireball = new Fireball(this);
     this.coin = new Coins(this);
 
@@ -36,7 +37,7 @@ export default class BaseLevel extends Phaser.Scene {
 
       if (this.liveBoard.lives < 1) {
         //  this.gameOverLastLive.play()
-        this.registry.events.emit("level", this.level);
+        
         this.scene.start("GameOver");
       } else {
         // this.fireballLostSound.play()

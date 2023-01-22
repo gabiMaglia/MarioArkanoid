@@ -2,11 +2,13 @@ import BaseLevel from "./baseLevel.js";
 import { Cloud } from "../../components/clouds.js";
 import { CanonBall } from "../../components/canonBalls.js";
 import { Bullet } from "../../components/bullets.js";
-const LEVEL = 2;
+
+
 export class Level2 extends BaseLevel {
   constructor(scene) {
     super({ key: "Level2" });
-    this.level = LEVEL;
+    this.level = 2;
+    localStorage.level = this.level
   }
 
   preload() {
@@ -66,10 +68,11 @@ export class Level2 extends BaseLevel {
     this.cameras.main.fadeIn(600, 10, 0, 0);
 
     this.add.image(400, 150, "backgroundLvl2");
-    this.levelBoard.create();
-    this.scoreboard.create(localStorage.score);
 
-    this.liveBoard.create();
+    this.levelBoard.create();
+    this.scoreboard.create(this.scoreboard.get());
+    this.liveBoard.create(this.liveBoard.get());
+
 
     this.bricks.createBrick1(106, 188);
     this.bricks.createBrick2(106, 144);

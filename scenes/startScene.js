@@ -7,6 +7,8 @@ export default class StartScene extends Phaser.Scene {
   
     init() {
       this.teclas = this.input.keyboard.createCursorKeys();
+      localStorage.score = 0
+      localStorage.lives = 3
     }
   
     preload() {

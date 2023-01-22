@@ -46,8 +46,10 @@ export class RestartBtn {
 
     this.restartText.on("pointerdown", () => {
       this.coinSound.play();
-    
-      this.relatedScene.scene.start('Level'+this.relatedScene.registry.get('level'));
+
+      this.relatedScene.scene.start('Level'+ parseInt(localStorage.level));
+        localStorage.lives = 3
+        localStorage.score -= 50
       
       this.relatedScene.cameras.main.fadeOut(400, 0, 0, 0);
     });

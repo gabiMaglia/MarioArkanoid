@@ -19,10 +19,18 @@ export class Bricks {
   }
 
   nextLevel(level) {
+    this.relatedScene.fireball.get().visible = false
     if (level > 3) {
       console.log("ganaste el juego");
     } else {
-      this.relatedScene.scene.start("Level" + level);
+      this.relatedScene.time.delayedCall(
+        500,
+        () => {
+          this.relatedScene.scene.start("Level" + level);
+        },
+        null
+      );
+      
     }
   }
 
@@ -160,10 +168,6 @@ export class Bricks {
   brick2Impact(fireball, bricks) {
     bricks.y -= 3;
     bricks.live = bricks.live - 1;
-
-    // setTimeout(() => {
-    //   bricks.y += 3;
-    // }, 100);
     this.time.delayedCall(
       100,
       () => {

@@ -1,10 +1,12 @@
 export class Liveboard {
-  constructor(scene, initialLives) {
+  constructor(scene) {
     this.relatedScene = scene;
-    this.lives = initialLives;
+
   }
-  create() {
-    this.livesText = this.relatedScene.add.text(26, 16, "Lives: " + this.lives, {
+  create(lives) {
+    localStorage.lives = lives
+    this.lives = lives
+    this.livesText = this.relatedScene.add.text(26, 16, "Lives: " + lives, {
       fontFamily: "mario",
       shadow :'100%' ,
       fontSize: "20px",
@@ -13,11 +15,20 @@ export class Liveboard {
   
   }
   decrementLive(live) {
-    this.lives--;
-    this.livesText.setText("Lives:" + this.lives);
+    this.lives -= live
+    localStorage.lives = this.lives
+    this.livesText.setText("Lives: " + parseInt(localStorage.lives));
+    
   }
   incrementLive(live){
-    this.lives++;
-    this.livesText.setText("Lives:" + this.lives);
+    this.lives += live;
+    localStorage.lives = this.lives
+    this.livesText.setText("Lives: " + parseInt(localStorage.lives));
+  }
+
+  get(){
+    
+    
+    return parseInt(localStorage.lives)
   }
 }

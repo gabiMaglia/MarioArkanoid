@@ -1,24 +1,18 @@
-import  BaseLevel  from "./baseLevel.js";
-import { FireTraps } from "../../components/fireTraps.js"
-
+import BaseLevel from "./baseLevel.js";
+import { FireTraps } from "../../components/fireTraps.js";
 
 export class Level3 extends BaseLevel {
-    constructor(scene) {
-        super({ key: "Level3" });
-        this.level = 3
+  constructor(scene) {
+    super({ key: "Level3" });
+    this.level = 3;
+    localStorage.level = this.level
   }
-   
-    preload() {
 
-
-      this.load.spritesheet(
-        "coin",
-        "../assets/images/extra/coin.png",
-        {
-          frameWidth: 172,
-          frameHeight: 221,
-        }
-      );
+  preload() {
+    this.load.spritesheet("coin", "../assets/images/extra/coin.png", {
+      frameWidth: 172,
+      frameHeight: 221,
+    });
 
     this.load
       .image(
@@ -34,7 +28,7 @@ export class Level3 extends BaseLevel {
           frameHeight: 20,
         }
       )
-      .image('fireTrap','../assets/images/levelScenes/level3/lvl3firetrap.png')
+      .image("fireTrap", "../assets/images/levelScenes/level3/lvl3firetrap.png")
       .image("brick1", "../assets/images/bricks/brick1.png")
       .image("brick2", "../assets/images/bricks/brick2.png")
       .image("brick3P", "../assets/images/bricks/brick3simple.png")
@@ -56,104 +50,97 @@ export class Level3 extends BaseLevel {
         }
       )
 
-      .image('1Up', '../assets/images/PowerUps/1Up.png')
-      .image('bigUp', '../assets/images/PowerUps/bigUp.png')
-      .audio('coin', '../assets/sounds/coin.mp3')
+      .image("1Up", "../assets/images/PowerUps/1Up.png")
+      .image("bigUp", "../assets/images/PowerUps/bigUp.png")
+      .audio("coin", "../assets/sounds/coin.mp3")
 
       .image("cloud", "../assets/images/levelScenes/level1/cloudLVL1.png")
-      
+
       .audio("ballLost", "../assets/sounds/ballLost.mp3");
   }
 
   create() {
-  
-
     this.cameras.main.fadeIn(600, 10, 0, 0);
-    
-    
+
     this.add.image(400, 200, "backgroundLvl3");
-    
+
     this.levelBoard.create();
-    this.scoreboard.create(localStorage.score);
-    this.liveBoard.create();
-     
-    this.bricks.createBrick1(106, 232)
+    this.scoreboard.create(this.scoreboard.get());
+    this.liveBoard.create(this.liveBoard.get());
+
+    this.bricks.createBrick1(106, 232);
     // this.bricks.createBrick2(106, 188)
     // this.bricks.createBrick3(106, 144)
     // this.bricks.createBrick4(106, 100)
-    
-    this.arkanoid.createArk(false, 'arkanoid');
+
+    this.arkanoid.createArk(false, "arkanoid");
     this.fireball.createFireball();
-    
-    
-    
-    this.coinAudio = this.sound.add("coin")
-    this.coinAudio.volume = 0.05
-    this.coinAudio.rate = 1.5
-    
-    
+
+    this.coinAudio = this.sound.add("coin");
+    this.coinAudio.volume = 0.05;
+    this.coinAudio.rate = 1.5;
+
     this.fireTraps1 = new FireTraps(this);
     this.fireTraps2 = new FireTraps(this);
 
-    this.fireTraps1.createFireTrap(120, 320)
-    this.fireTraps2.createFireTrap(655, 370)
+    this.fireTraps1.createFireTrap(120, 320);
+    this.fireTraps2.createFireTrap(655, 370);
     console.log(this.fireTraps1.fireTrap.body);
 
-    this.physics.add.collider(this.fireball.get(), this.fireTraps1.getFireTraps())
-    this.physics.add.collider(this.fireball.get(), this.fireTraps2.getFireTraps())
-    
-    this.physics.add.collider(this.fireball.get(), this.arkanoid.get(), this.arkanoid.platformImpact, null, this);
-   
-   
+    this.physics.add.collider(
+      this.fireball.get(),
+      this.fireTraps1.getFireTraps()
+    );
+    this.physics.add.collider(
+      this.fireball.get(),
+      this.fireTraps2.getFireTraps()
+    );
 
-   this.physics.add.collider(
-    this.bricks.brick1Group,
+    this.physics.add.collider(
+      this.fireball.get(),
+      this.arkanoid.get(),
+      this.arkanoid.platformImpact,
+      null,
+      this
+    );
 
-    this.fireball.get(),
-    this.bricks.brick1Impact,
-    null,
-    this
-  );
+    this.physics.add.collider(
+      this.bricks.brick1Group,
 
-  // this.physics.add.collider(
-  //   this.bricks.brick2Group,
+      this.fireball.get(),
+      this.bricks.brick1Impact,
+      null,
+      this
+    );
 
-  //   this.fireball.get(),
-  //   this.bricks.brick2Impact,
-  //   null,
-  //   this
-  // );
-  // this.physics.add.collider(
-  //   this.bricks.brick3Group,
+    // this.physics.add.collider(
+    //   this.bricks.brick2Group,
 
-  //   this.fireball.get(),
-  //   this.bricks.brick3Impact,
-  //   null,
-  //   this
-  // );
+    //   this.fireball.get(),
+    //   this.bricks.brick2Impact,
+    //   null,
+    //   this
+    // );
+    // this.physics.add.collider(
+    //   this.bricks.brick3Group,
 
-  // this.physics.add.collider(
-  //   this.bricks.brick4Group,
+    //   this.fireball.get(),
+    //   this.bricks.brick3Impact,
+    //   null,
+    //   this
+    // );
 
-  //   this.fireball.get(),
-  //   this.bricks.brick4Impact,
-  //   null,
-  //   this
-  // );
-  
-}
+    // this.physics.add.collider(
+    //   this.bricks.brick4Group,
 
-update() {
-  super.update();
-  
-  
-      
-      
+    //   this.fireball.get(),
+    //   this.bricks.brick4Impact,
+    //   null,
+    //   this
+    // );
   }
-  
 
- 
-
-
+  update() {
+    super.update();
+  }
 }
-
