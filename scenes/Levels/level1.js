@@ -65,8 +65,8 @@ export class Level1 extends BaseLevel {
           this.liveBoard.create(parseInt(localStorage.lives));
           
           this.bricks.createBrick1(113, 188);
-    // this.bricks.createBrick2(113, 144)
-    // this.bricks.createBrick3(112, 100)
+    this.bricks.createBrick2(113, 144)
+    this.bricks.createBrick3(112, 100)
 
     this.arkanoid.createArk(false, "arkanoidlvl1");
     this.fireball.createFireball();
@@ -109,22 +109,22 @@ export class Level1 extends BaseLevel {
       this
     );
 
-    // this.physics.add.collider(
-    //   this.bricks.brick2Group,
+    this.physics.add.collider(
+      this.bricks.brick2Group,
 
-    //   this.fireball.get(),
-    //   this.bricks.brick2Impact,
-    //   null,
-    //   this
-    // );
-    // this.physics.add.collider(
-    //   this.bricks.brick3Group,
+      this.fireball.get(),
+      this.bricks.brick2Impact,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.bricks.brick3Group,
 
-    //   this.fireball.get(),
-    //   this.bricks.brick3Impact,
-    //   null,
-    //   this
-    // );
+      this.fireball.get(),
+      this.bricks.brick3Impact,
+      null,
+      this
+    );
   }
 
   update() {

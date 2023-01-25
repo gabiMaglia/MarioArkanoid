@@ -1,6 +1,7 @@
 export class Scoreboard {
   constructor(scene) {
     this.relatedScene = scene;
+    this.scoreForLifeCounter = 0
   }
 
   create(points) {
@@ -15,7 +16,8 @@ export class Scoreboard {
     this.score += points;
     localStorage.score = this.score;
     this.scoreText.setText("Score: " + parseInt(localStorage.score));
-    if (this.score > 1500) {
+    if (this.score > (this.scoreForLifeCounter + 400)) {
+      this.scoreForLifeCounter = this.score
       this.relatedScene.liveBoard.incrementLive(1);
     }
   }

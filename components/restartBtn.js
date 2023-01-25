@@ -49,7 +49,7 @@ export class RestartBtn {
 
       this.relatedScene.scene.start('Level'+ parseInt(localStorage.level));
         localStorage.lives = 3
-        localStorage.score -= 50
+        localStorage.score -= 500
       
       this.relatedScene.cameras.main.fadeOut(400, 0, 0, 0);
     });

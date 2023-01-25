@@ -60,7 +60,7 @@ export class Bricks {
     //creamos el grupo de bricks
     this.brick1Group = this.relatedScene.physics.add.staticGroup({
       key: "brick1",
-      frameQuantity: 1,
+      frameQuantity: 10,
       gridAlign: {
         width: 10,
         height: 4,
@@ -80,7 +80,7 @@ export class Bricks {
     this.relatedScene.brick2GroupFinished = false;
     this.brick2Group = this.relatedScene.physics.add.staticGroup({
       key: "brick2",
-      frameQuantity: 1,
+      frameQuantity: 10,
       gridAlign: {
         width: 10,
         height: 4,
@@ -101,7 +101,7 @@ export class Bricks {
       key: "brick3Sprite",
       frames: [0, 1],
       frame: 1,
-      frameQuantity: 1,
+      frameQuantity: 10,
       gridAlign: {
         width: 10,
         height: 4,
